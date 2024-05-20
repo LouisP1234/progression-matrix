@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progression Matrix Self-Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .category {
+            margin-bottom: 20px;
+        }
+        .level-range {
+            width: 100%;
+        }
+        .level-display {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Progression Matrix Self-Assessment</h1>
+    <form id="progression-form">
+        <div class="category">
+            <h2>Vision</h2>
+            <label for="vision">Select your level:</label>
+            <input type="range" id="vision" name="vision" min="1" max="10" class="level-range" oninput="updateLevelDisplay(this)">
+            <span id="vision-level" class="level-display">5</span>
+        </div>
+        <div class="category">
+            <h2>Operational Excellence</h2>
+            <label for="operational-excellence">Select your level:</label>
+            <input type="range" id="operational-excellence" name="operational-excellence" min="1" max="10" class="level-range" oninput="updateLevelDisplay(this)">
+            <span id="operational-excellence-level" class="level-display">5</span>
+        </div>
+        <div class="category">
+            <h2>Financial Acumen</h2>
+            <label for="financial-acumen">Select your level:</label>
+            <input type="range" id="financial-acumen" name="financial-acumen" min="1" max="10" class="level-range" oninput="updateLevelDisplay(this)">
+            <span id="financial-acumen-level" class="level-display">5</span>
+        </div>
+        <div class="category">
+            <h2>Organizational Development</h2>
+            <label for="organizational-development">Select your level:</label>
+            <input type="range" id="organizational-development" name="organizational-development" min="1" max="10" class="level-range" oninput="updateLevelDisplay(this)">
+            <span id="organizational-development-level" class="level-display">5</span>
+        </div>
+        <div class="category">
+            <h2>Innovation and Change Management</h2>
+            <label for="innovation-change-management">Select your level:</label>
+            <input type="range" id="innovation-change-management" name="innovation-change-management" min="1" max="10" class="level-range" oninput="updateLevelDisplay(this)">
+            <span id="innovation-change-management-level" class="level-display">5</span>
+        </div>
+        <div class="category">
+            <h2>Progressive Awareness</h2>
+            <label for="progressive-awareness">Select your level:</label>
+            <input type="range" id="progressive-awareness" name="progressive-awareness" min="1" max="10" class="level-range" oninput="updateLevelDisplay(this)">
+            <span id="progressive-awareness-level" class="level-display">5</span>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        function updateLevelDisplay(rangeInput) {
+            const levelDisplay = document.getElementById(`${rangeInput.id}-level`);
+            levelDisplay.textContent = rangeInput.value;
+        }
+
+        document.getElementById('progression-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const results = {};
+            formData.forEach((value, key) => {
+                results[key] = value;
+            });
+            console.log('Self-assessment results:', results);
+            alert('Self-assessment submitted! Check the console for results.');
+        });
+    </script>
+</body>
+</html>
